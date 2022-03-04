@@ -24,10 +24,10 @@ videoPlayer.onplay = (e) => {
 
 videoPlayerDemoBtn.addEventListener('click', () => {
     video.srcObject = null;
-    for (let i = 0; i < children.length; i++) {
-        liveView.removeChild(children[i]);
-    }
-    children.splice(0);
+    // for (let i = 0; i < children.length; i++) {
+    //     liveView.removeChild(children[i]);
+    // }
+    // children.splice(0);
     if (requestId !== undefined) {
         window.cancelAnimationFrame(requestId);
     }
