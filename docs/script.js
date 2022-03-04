@@ -109,8 +109,8 @@ function predictWebcam(videoElement, parentView, objectList) {
                 if (predClassUpdated !== undefined && !objectsSet.has(predClassUpdated)) {
                     const li = document.createElement('li');
                     li.textContent = `${predClassUpdated} - Acurracy Rate of ${scoreNice}%`;
-                    li.classList.add('object-identified-li')
-
+                    li.classList.add('object-identified-li');
+                    li.dataset.rate = scoreNice;
                     objectList.append(li);
                     objectsSet.add(predClassUpdated);
                     li.style.background = background;
@@ -121,8 +121,17 @@ function predictWebcam(videoElement, parentView, objectList) {
                     objectList.append(li);
                     objectsSet.add(predClass);
                     li.style.background = background;
-
+                    li.dataset.rate = scoreNice;
                 }
+
+
+                const listItems = [...objectList.querySelectorAll('li')];
+                listItemsSorted = listItems.sort((el1, el2) => el1.scoreNice - el2.scoreNice);
+
+                objectList.innerHTML = '';
+                listItemsSorted.forEach(el => {
+                    objectList.appendChild(el);
+                })
 
 
                 parentView.appendChild(highlighter);
