@@ -88,8 +88,9 @@ a {
 }
 
 .min-accuracy-span {
-    background: #2565ff;
-    color: #fff;
+    /* background: #2565ff;
+    color: #fff; */
+    color: #222;
     /* padding: 0.5rem 1rem; */
     font-size: 18px;
     font-weight: 900;
