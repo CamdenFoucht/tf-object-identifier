@@ -20,14 +20,13 @@ minAccuracyInput.addEventListener('click', handleAccuracyChange);
 var model = undefined;
 
 
-// cocoSsd.load().then(function (loadedModel) {
-//     model = loadedModel;
-//     // Show demo section now model is ready to use.
-//     console.log(pageLoader);
-//     pageLoader.style.display = 'none';
-// });
+cocoSsd.load().then(function (loadedModel) {
+    model = loadedModel;
+    // Show demo section now model is ready to use.
+    console.log(pageLoader);
+    pageLoader.style.display = 'none';
+});
 
-pageLoader.style.display = 'none';
 
 let requestId = undefined;
 let objectsSet = new Set();
