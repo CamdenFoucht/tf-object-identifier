@@ -1,6 +1,9 @@
 const pageLoader = document.querySelector('.page-loader')
-const minAccuracyInput = document.querySelector('.custom-number input');
+const minAccuracyInput = document.querySelector('.accuracy-slider');
+const minAccuracySpan = document.querySelector('.min-accuracy-span');
+
 let minAccuracy = minAccuracyInput.value;
+minAccuracySpan.textContent = minAccuracy;
 
 const handleMinus = () => {
     minAccuracyInput.stepDown();
@@ -9,6 +12,13 @@ const handleMinus = () => {
 const handlePlus = () => {
     minAccuracyInput.stepUp();
 }
+
+const slideValue = document.querySelector("span");
+const inputSlider = document.querySelector("input");
+inputSlider.oninput = (() => {
+    minAccuracy = inputSlider.value;
+    minAccuracySpan.textContent = minAccuracy;
+});
 
 function handleAccuracyChange(e) {
     console.log(e.target.value);
@@ -27,6 +37,8 @@ cocoSsd.load().then(function (loadedModel) {
     console.log(pageLoader);
     pageLoader.style.display = 'none';
 });
+
+// pageLoader.style.display = 'none';
 
 
 let requestId = undefined;

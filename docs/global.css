@@ -5,6 +5,11 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    color: #2565ff;
 }
 
 .nav {
@@ -36,6 +41,80 @@ body {
 }
 
 .nav-li {
-    padding: 0.25rem;
-    margin-right: 0.25rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    transition: .3s;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-a {
+    text-decoration: none;
+    color: #2565ff;
+    font-weight: bold;
+}
+
+
+
+.nav-li.active, .nav-li:hover {
+    border-bottom: 1px solid #2565ff;
+}
+
+.wrapper .container {
+    padding: 2rem;
+}
+
+.h1 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-size: 900;
+    color: #444;
+}
+
+.min-accuracy-container {
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    height: 100%;
+}
+
+.acceptance-rate {
+    margin: 0 0 1rem 0;
+    font-size: 18px;
+}
+
+.accurracy-helper-text{
+    color: #aaa;
+    font-size: 14px;
+}
+
+.min-accuracy-span {
+    background: #2565ff;
+    color: #fff;
+    /* padding: 0.5rem 1rem; */
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0 1rem;
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+}
+
+.webcam-btn {
+    margin: 0 0 0 0;
+}
+
+.line-break {
+    height: 1px;
+    width: 100%;
+    background: #eee;
+    margin: 3rem 0;
 }

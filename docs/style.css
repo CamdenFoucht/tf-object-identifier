@@ -1,5 +1,4 @@
-* body {
-  font-family: 'Roboto', sans-serif;
+body {
   color: #3D3D3D;
 }
 
@@ -268,10 +267,6 @@ video {
 
 
 /*  Min Accuracy */
-
-.min-accuracy-container {
-  margin: 3rem 0;
-}
 
 .min-accuracy-input {
   padding: 1rem 0.25rem;
