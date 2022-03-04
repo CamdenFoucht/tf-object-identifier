@@ -127,8 +127,8 @@ function predictWebcam(videoElement, parentView, objectList) {
                 }
 
 
-                const listItems = [...objectList.querySelectorAll('li')];
-                listItemsSorted = listItems.sort((el1, el2) => el1.scoreNice - el2.scoreNice);
+                const listItems = [...objectList.children];
+                listItemsSorted = listItems.sort((el1, el2) => el2.dataset.scoreNice - el1.dataset.scoreNice);
 
                 objectList.innerHTML = '';
                 listItemsSorted.forEach(el => {
