@@ -11,11 +11,6 @@ function hasGetUserMedia() {
         navigator.mediaDevices.getUserMedia);
 }
 
-// Keep a reference of all the child elements we create
-// so we can remove them easilly on each render.
-var children = [];
-
-
 // If webcam supported, add event listener to button for when user
 // wants to activate it.
 if (hasGetUserMedia()) {

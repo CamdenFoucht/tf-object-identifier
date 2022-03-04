@@ -32,6 +32,8 @@ cocoSsd.load().then(function (loadedModel) {
 let requestId = undefined;
 let objectsSet = new Set();
 
+var children = [];
+
 function predictWebcam(videoElement, parentView, objectList) {
     // Now let's start classifying the stream.
     model.detect(videoElement).then(function (predictions) {
