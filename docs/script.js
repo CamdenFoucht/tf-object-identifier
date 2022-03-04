@@ -107,12 +107,14 @@ function predictWebcam(videoElement, parentView, objectList) {
                     background = 'rgba(76, 175, 80, 0.6)';
                 }
 
+                const listItems = [...objectList.children];
 
                 if (predClassUpdated !== undefined && !objectsSet.has(predClassUpdated)) {
                     const li = document.createElement('li');
                     li.textContent = `${predClassUpdated} - Acurracy Rate of ${scoreNice}%`;
                     li.classList.add('object-identified-li');
                     li.dataset.rate = scoreNice;
+                    li.dataset.name = predClassUpdated;
                     objectList.append(li);
                     objectsSet.add(predClassUpdated);
                     li.style.background = background;
@@ -120,10 +122,17 @@ function predictWebcam(videoElement, parentView, objectList) {
                     const li = document.createElement('li');
                     li.classList.add('object-identified-li')
                     li.textContent = `${predClass} - Acurracy Rate of ${scoreNice}%`;
+                    li.dataset.name = predClass;
                     objectList.append(li);
                     objectsSet.add(predClass);
                     li.style.background = background;
                     li.dataset.rate = scoreNice;
+                } else {
+                    listItems.forEach(el => {
+                        if (el.dataset.name === predClass || el.dataset.name === predClassUpdated) {
+                            res.dataset.rank = Math.max(res.data.rank, scoreNice);
+                        }
+                    })
                 }
 
 
