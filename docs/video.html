@@ -18,7 +18,7 @@
   <div class="nav-wrapper">
     <div class="container">
       <nav class="nav">
-        <img src="./logo.png" class="logo" alt="Object Detector"/>
+        <img src="./logo.png" class="logo"/>
         <ul class="nav-ul">
 
           <li class="nav-li">
@@ -46,74 +46,51 @@
         When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left
         of
         your window)</p>
-      <div class="min-accuracy-container">
-        <p class="min-accuracy-text">Set the minimum accurracy of the object detector.<span class="min-accuracy-span">
-            The object detector will ignore values less than the values displayed here.</span></p>
-        <div class='custom-number'>
-          <input type='number' value='66' min='0' max='100' />
-          <div class='number-symbol minus' onclick='handleMinus()'>-</div>
-          <div class='number-symbol plus' onclick='handlePlus()'>+</div>
-        </div>
-      </div>
+        <div class="control-grid">
+          <div class="min-accuracy-container">
+
+            <div id="video-player-container" class="video-player-container">
+              <button id="demo-video-player-btn" class="btn">Demo Video</button>
+              <button class="upload-video-btn btn">Upload Video</button>
+              <input hidden class="video-file-input" type="file" name="file" />
+      
+      
+          </div>           
+         <div class="line-break"></div>
+            <p class="acceptance-rate">Accepted Rate: <span class="min-accuracy-span">66</span></p>
+            <div class="range">
+              <div class="field">
+                <div class="value left">
+                  0</div>
+                <input class="accuracy-slider" type="range" min="0" max="100" value="66" steps="1">
+                <div class="value right">
+                  100</div>
+              </div>
+              <p><span class="accurracy-helper-text">The model will not highlight objects with prediction rates less than this.</span></p>
+            </div>
+            <div class="line-break"></div>
+    
+            </div>
 
 
-
-
-      <div id="video-player-container" class="video-player-container">
-        <button id="demo-video-player-btn" class="btn">Demo Video</button>
-        <button class="upload-video-btn btn">Upload Video</button>
-        <input hidden class="video-file-input" type="file" name="file" />
-
-
-        <div class="video-player-wrapper">
-          <div id="liveView2" class="videoView">
-            <video crossorigin='anonymous' id="video-player" controls>
-              <source
-                src="https://static.videezy.com/system/resources/previews/000/008/452/original/Dark_Haired_Girl_Pensive_Looks_at_Camera.mp4"
-                type="video/mp4">
-              </source>
-
-            </video>
-          </div>
-        </div>
-        <div class="objects-identified">
-          <ul class="video-objects-identified-list"></ul>
-        </div>
-      </div>
-
-      <div id="image-prediction-container" class="image-prediction-container tabcontent">
-        <div class="image-grid">
-          <div>
-            <button class="upload-img-btn">Upload Image</button>
-            <input hidden class="file-input" type="file" name="file" />
-            <div class="image-upload">
-              <img src="#" class="image-upload-viewer" />
+          <div class="video-player-wrapper">
+            <div id="liveView2" class="videoView">
+              <video crossorigin='anonymous' id="video-player" controls>
+                <source
+                  src="https://static.videezy.com/system/resources/previews/000/008/452/original/Dark_Haired_Girl_Pensive_Looks_at_Camera.mp4"
+                  type="video/mp4">
+                </source>
+  
+              </video>
             </div>
           </div>
-          <div>
-            <button class="upload-img-btn">Upload Image</button>
-            <input hidden class="file-input" type="file" name="file" />
-            <div class="image-upload">
-              <img src="#" class="image-upload-viewer" />
-            </div>
-          </div>
-          <div>
-            <button class="upload-img-btn">Upload Image</button>
-            <input hidden class="file-input" type="file" name="file" />
-            <div class="image-upload">
-              <img src="#" class="image-upload-viewer" />
-            </div>
-          </div>
-          <div>
-            <button class="upload-img-btn">Upload Image</button>
-            <input hidden class="file-input" type="file" name="file" />
-            <div class="image-upload">
-              <img src="#" class="image-upload-viewer" />
-            </div>
+          <div class="objects-identified">
+            <ul class="video-objects-identified-list"></ul>
           </div>
         </div>
-      </div>
-    </div>
+
+
+
   </div>
 
 

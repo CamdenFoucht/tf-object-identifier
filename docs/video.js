@@ -43,7 +43,7 @@ const uploadVideoBtn = document.querySelector('.upload-video-btn');
 console.log('videoBtn', uploadVideoBtn)
 uploadVideoBtn.addEventListener('click', (e) => {
     console.log("Target", e);
-    e.target.nextElementSibling.click();
+    uploadVideoBtn.nextElementSibling.click();
 });
 
 const videoFileInput = document.querySelector('.video-file-input');

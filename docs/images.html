@@ -25,11 +25,11 @@
                   <li class="nav-li">
                     <a href="./stream.html" class="nav-a">Stream</a>
                   </li>
-                  <li class="nav-li active">
-                    <a href="#" class="nav-a">Video Player</a>
-                  </li>
                   <li class="nav-li">
-                    <a href="./images.html" class="nav-a">Images</a>
+                    <a href="./video.html" class="nav-a">Video Player</a>
+                  </li>
+                  <li class="nav-li active">
+                    <a href="#" class="nav-a">Images</a>
                   </li>
                 </ul>
               </nav>
@@ -46,51 +46,61 @@
             <p>
                 To give the webcam stream detector a try, please click 'Enable Webcam' and accept the popup to start streaming with your webcam. The detector will highlight any objects found, and output them below the video.
             </p>
+
+
             <div class="control-grid">
-            <div class="min-accuracy-container">
-                <p class="">Minimum Accuracy</span></p>
-                <p>Accepted Rate: <span class="accuracy-span">66</span> <span>The model will not highlight objects with prediction rates less than this.</span></p>
-                <div class='custom-number'>
-                    <input type='number' value='66' min='0' max='100' />
-                    <div class='number-symbol minus' onclick='handleMinus()'>-</div>
-                    <div class='number-symbol plus' onclick='handlePlus()'>+</div>
+                <div class="min-accuracy-container">
+                  <button id="webcamButton" class="webcam-btn btn">Enable Webcam</button>
+                  <div class="line-break"></div>
+                  <p class="acceptance-rate">Accepted Rate: <span class="min-accuracy-span">66</span></p>
+                  <div class="range">
+                    <div class="field">
+                      <div class="value left">
+                        0</div>
+                      <input class="accuracy-slider" type="range" min="0" max="100" value="66" steps="1">
+                      <div class="value right">
+                        100</div>
+                    </div>
+                    <p><span class="accurracy-helper-text">The model will not highlight objects with prediction rates less than this.</span></p>
+                  </div>
+                  <div class="line-break"></div>
+          
+                  </div>
+                  <div id="image-prediction-container" class="image-prediction-container">
+                    <div class="image-grid">
+                        <div>
+                            <button class="upload-img-btn">Upload Image</button>
+                            <input hidden class="file-input" type="file" name="file" />
+                            <div class="image-upload">
+                                <img src="#" class="image-upload-viewer" />
+                            </div>
+                        </div>
+                        <div>
+                            <button class="upload-img-btn">Upload Image</button>
+                            <input hidden class="file-input" type="file" name="file" />
+                            <div class="image-upload">
+                                <img src="#" class="image-upload-viewer" />
+                            </div>
+                        </div>
+                        <div>
+                            <button class="upload-img-btn">Upload Image</button>
+                            <input hidden class="file-input" type="file" name="file" />
+                            <div class="image-upload">
+                                <img src="#" class="image-upload-viewer" />
+                            </div>
+                        </div>
+                        <div>
+                            <button class="upload-img-btn">Upload Image</button>
+                            <input hidden class="file-input" type="file" name="file" />
+                            <div class="image-upload">
+                                <img src="#" class="image-upload-viewer" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div id="image-prediction-container" class="image-prediction-container">
-                <div class="image-grid">
-                    <div>
-                        <button class="upload-img-btn">Upload Image</button>
-                        <input hidden class="file-input" type="file" name="file" />
-                        <div class="image-upload">
-                            <img src="#" class="image-upload-viewer" />
-                        </div>
-                    </div>
-                    <div>
-                        <button class="upload-img-btn">Upload Image</button>
-                        <input hidden class="file-input" type="file" name="file" />
-                        <div class="image-upload">
-                            <img src="#" class="image-upload-viewer" />
-                        </div>
-                    </div>
-                    <div>
-                        <button class="upload-img-btn">Upload Image</button>
-                        <input hidden class="file-input" type="file" name="file" />
-                        <div class="image-upload">
-                            <img src="#" class="image-upload-viewer" />
-                        </div>
-                    </div>
-                    <div>
-                        <button class="upload-img-btn">Upload Image</button>
-                        <input hidden class="file-input" type="file" name="file" />
-                        <div class="image-upload">
-                            <img src="#" class="image-upload-viewer" />
-                        </div>
-                    </div>
+  
                 </div>
-            </div>
 
-        </div>
 
         </div>
 

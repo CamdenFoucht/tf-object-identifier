@@ -342,7 +342,7 @@ video {
 
 .image-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
   padding: 2rem;
@@ -350,8 +350,8 @@ video {
 
 .image-upload {
   height: 500px;
-  width: 500px;
-  background: #222;
+  width: 100%;
+  background: #eaeaea;
   position: relative;
 
 }

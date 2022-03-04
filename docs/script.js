@@ -14,8 +14,9 @@ const handlePlus = () => {
 }
 
 const slideValue = document.querySelector("span");
-const inputSlider = document.querySelector("input");
+const inputSlider = document.querySelector(".accuracy-slider");
 inputSlider.oninput = (() => {
+    console.log('on input?')
     minAccuracy = inputSlider.value;
     minAccuracySpan.textContent = minAccuracy;
 });
@@ -31,14 +32,14 @@ minAccuracyInput.addEventListener('click', handleAccuracyChange);
 var model = undefined;
 
 
-cocoSsd.load().then(function (loadedModel) {
-    model = loadedModel;
-    // Show demo section now model is ready to use.
-    console.log(pageLoader);
-    pageLoader.style.display = 'none';
-});
+// cocoSsd.load().then(function (loadedModel) {
+//     model = loadedModel;
+//     // Show demo section now model is ready to use.
+//     console.log(pageLoader);
+//     pageLoader.style.display = 'none';
+// });
 
-// pageLoader.style.display = 'none';
+pageLoader.style.display = 'none';
 
 
 let requestId = undefined;
@@ -148,6 +149,10 @@ function predictWebcam(videoElement, parentView, objectList) {
                 } else {
                     listItemsCurrent.forEach(el => {
                         if (el.dataset.name === predClass || el.dataset.name === predClassUpdated) {
+                            if (scoreNice >= el.dataset.rank) {
+                                el.style.background = background;
+                                el.textContent = `${el.dataset.name} - Highest Accuracy Rate Seen - ${scoreNice}`
+                            }
                             el.dataset.rank = Math.max(el.dataset.rank, scoreNice);
                         }
                     })
