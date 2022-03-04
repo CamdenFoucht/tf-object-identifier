@@ -1,5 +1,6 @@
 const pageLoader = document.querySelector('.page-loader')
 const minAccuracyInput = document.querySelector('.custom-number input');
+let minAccuracy = minAccuracyInput.value;
 
 const handleMinus = () => {
     minAccuracyInput.stepDown();
