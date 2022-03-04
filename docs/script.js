@@ -136,7 +136,7 @@ function predictWebcam(videoElement, parentView, objectList) {
                 } else {
                     listItemsCurrent.forEach(el => {
                         if (el.dataset.name === predClass || el.dataset.name === predClassUpdated) {
-                            res.dataset.rank = Math.max(res.data.rank, scoreNice);
+                            el.dataset.rank = Math.max(res.data.rank, scoreNice);
                         }
                     })
                 }
