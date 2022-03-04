@@ -42,7 +42,9 @@ fileInputs.forEach(input => {
           p.classList.add('prediction-text')
           p.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
             'top: ' + predictions[n].bbox[1] + 'px; ' +
-            'width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+            'min-width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+            
+          p.style.color = '#fff';
 
           const highlighter = document.createElement('div');
           highlighter.setAttribute('class', 'highlighter');

@@ -90,14 +90,20 @@ function predictWebcam(videoElement, parentView, objectList) {
                 if (score <= 0.3) {
                     highlighter.style.background = 'rgba(255, 0, 0, 0.4)';
                     highlighter.style.borderColor = 'rgba(255, 0, 0, 0.4)';
-                    background = 'rgba(255, 0, 0, 0.4)'
+                    background = 'rgba(255, 0, 0, 0.4)';
+                    p.style.background = `rgba(255, 0, 0, 0.7)`
+                    p.style.borderColor = `rgba(255, 0, 0, 0.4)`
                 } else if (score <= 0.5) {
                     highlighter.style.background = 'rgba(3, 169, 244, 0.4)';
                     background = 'rgba(3, 169, 244, 0.4)'
+                    p.style.background = `rgba(3, 169, 244, 0.7)`
+                    p.style.borderColor = `rgba(3, 169, 244, 0.4)`
 
                 } else if (score <= 0.75) {
                     highlighter.style.background = 'rgba(63, 81, 181, 0.3)';
-                    background = 'rgba(63, 81, 181, 0.3)'
+                    background = 'rgba(63, 81, 181, 0.3)';
+                    p.style.background = `rgba(63, 81, 181, 0.8)`
+                    p.style.borderColor = `rgba(63, 81, 181, 0.3)`
 
                 } else {
                     highlighter.style.background = 'rgba(76, 175, 80, 0.3)';
@@ -107,11 +113,11 @@ function predictWebcam(videoElement, parentView, objectList) {
                     background = 'rgba(76, 175, 80, 0.6)';
                 }
 
-                const listItems = [...objectList.children];
+                const listItemsCurrent = [...objectList.children];
 
                 if (predClassUpdated !== undefined && !objectsSet.has(predClassUpdated)) {
                     const li = document.createElement('li');
-                    li.textContent = `${predClassUpdated} - Acurracy Rate of ${scoreNice}%`;
+                    li.textContent = `${predClassUpdated} - Highest Accuracy Rate Seen: ${scoreNice}%`;
                     li.classList.add('object-identified-li');
                     li.dataset.rate = scoreNice;
                     li.dataset.name = predClassUpdated;
@@ -121,14 +127,14 @@ function predictWebcam(videoElement, parentView, objectList) {
                 } else if (predClass !== undefined && !objectsSet.has(predClass)) {
                     const li = document.createElement('li');
                     li.classList.add('object-identified-li')
-                    li.textContent = `${predClass} - Acurracy Rate of ${scoreNice}%`;
+                    li.textContent = `${predClass} - Highest Accuracy Rate Seen: ${scoreNice}%`;
                     li.dataset.name = predClass;
                     objectList.append(li);
                     objectsSet.add(predClass);
                     li.style.background = background;
                     li.dataset.rate = scoreNice;
                 } else {
-                    listItems.forEach(el => {
+                    listItemsCurrent.forEach(el => {
                         if (el.dataset.name === predClass || el.dataset.name === predClassUpdated) {
                             res.dataset.rank = Math.max(res.data.rank, scoreNice);
                         }
