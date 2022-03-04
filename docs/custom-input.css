@@ -1,0 +1,48 @@
+.custom-number {
+  position: relative;
+  width: 140px;
+  height: 40px;
+  margin: 30px unset;
+  border-radius: 10px;
+  overflow: hidden;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.custom-number input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 10px 40px;
+  border: 1px solid #2565ff;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+  color: #2565ff;
+  font: 600 16px Arial, sans-serif;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5) inset;
+}
+
+.number-symbol {
+  width: 40px;
+  height: 42px;
+  position: absolute;
+  top: 0;
+  background-color: #2565ff;
+  color: #fff;
+  font: 600 20px/40px Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+.minus {
+  left: 0;
+}
+
+.plus {
+  right: 0;
+}

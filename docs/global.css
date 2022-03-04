@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    background: #fff;
+    max-width: 1400px;
+    margin: auto;
+    padding: 15px;
+}
+
+.wrapper {
+    padding: 5rem;
+    background: #eaeaea;
+    min-height: 100vh;
+
+}
+
+.nav-ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-li {
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+}
