@@ -23,7 +23,7 @@ fileInputs.forEach(input => {
         setTimeout(res, 1000);
       })
 
-      model.detect(img).then(function (predictions) {
+      model.detect(img, 30, minAccuracy / 100).then(function (predictions) {
         // Lets write the predictions to a new paragraph element and
         // add it to the DOM.
         // console.log(predictions);

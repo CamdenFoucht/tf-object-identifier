@@ -32,7 +32,9 @@ minAccuracyInput.addEventListener('click', handleAccuracyChange);
 var model = undefined;
 
 
-cocoSsd.load().then(function (loadedModel) {
+cocoSsd.load({
+    base: 'mobilenet_v1'
+}).then(function (loadedModel) {
     model = loadedModel;
     // Show demo section now model is ready to use.
     console.log(pageLoader);
@@ -49,7 +51,7 @@ var children = [];
 
 function predictWebcam(videoElement, parentView, objectList) {
     // Now let's start classifying the stream.
-    model.detect(videoElement).then(function (predictions) {
+    model.detect(videoElement, 20, minAccuracy / 100).then(function (predictions) {
         // Remove any highlighting we did previous frame.
         for (let i = 0; i < children.length; i++) {
             parentView.removeChild(children[i]);
@@ -86,7 +88,8 @@ function predictWebcam(videoElement, parentView, objectList) {
                 // Draw in top left of bounding box outline.
                 p.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
                     'top: ' + predictions[n].bbox[1] + 'px;' +
-                    'width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+                    'min-width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+
 
                 // Draw the actual bounding box.
                 const highlighter = document.createElement('div');
@@ -95,6 +98,8 @@ function predictWebcam(videoElement, parentView, objectList) {
                     predictions[n].bbox[1] + 'px; width: ' +
                     predictions[n].bbox[2] + 'px; height: ' +
                     predictions[n].bbox[3] + 'px;';
+
+            
 
                 const score = predictions[n].score;
 
@@ -149,23 +154,14 @@ function predictWebcam(videoElement, parentView, objectList) {
                 } else {
                     listItemsCurrent.forEach(el => {
                         if (el.dataset.name === predClass || el.dataset.name === predClassUpdated) {
-                            if (scoreNice >= el.dataset.rank) {
+                            if (scoreNice >= el.dataset.rate) {
                                 el.style.background = background;
                                 el.textContent = `${el.dataset.name} - Highest Accuracy Rate Seen - ${scoreNice}`
                             }
-                            el.dataset.rank = Math.max(el.dataset.rank, scoreNice);
+                            el.dataset.rate = Math.max(el.dataset.rate, scoreNice);
                         }
                     })
                 }
-
-
-                const listItems = [...objectList.children];
-                listItemsSorted = listItems.sort((el1, el2) => el2.dataset.scoreNice - el1.dataset.scoreNice);
-
-                objectList.innerHTML = '';
-                listItemsSorted.forEach(el => {
-                    objectList.appendChild(el);
-                })
 
 
                 parentView.appendChild(highlighter);
@@ -175,7 +171,14 @@ function predictWebcam(videoElement, parentView, objectList) {
                 children.push(highlighter);
                 children.push(p);
             }
-
+            const listItems = [...objectList.children];
+            
+            listItemsSorted = listItems.sort((el1, el2) => el2.dataset.rate - el1.dataset.rate);
+            console.log("List Sorted", listItemsSorted);
+            objectList.innerHTML = '';
+            listItemsSorted.forEach(el => {
+                objectList.appendChild(el);
+            })
         }
 
         // Call this function again to keep predicting when the browser is ready.
