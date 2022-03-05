@@ -71,35 +71,36 @@ function predictWebcam(videoElement, parentView, objectList) {
             if (scoreNice >= minAccuracy) {
                 const predClass = predictions[n].class;
                 if (currentSet.has(predClass)) {
-                    predClassUpdated = `${predClass} - ${currentMap.get(predClass)}`
+                    predClassUpdated = `${predClass}(${currentMap.get(predClass)})`
                     currentMap.set(predClass, currentMap.get(predClass) + 1);
                     currentSet.add(predClassUpdated);
                 } else {
                     currentSet.add(predClass);
-                    currentMap.set(predClass, 1);
+                    currentMap.set(predClass, 2);
                 }
 
 
                 // console.log(predictions[n]);
                 const p = document.createElement('p');
-                p.innerText = predictions[n].class + ' - with ' +
-                    Math.round(parseFloat(predictions[n].score) * 100) +
-                    '% confidence.';
-                // Draw in top left of bounding box outline.
-                p.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
-                    'top: ' + predictions[n].bbox[1] + 'px;' +
-                    'min-width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+                // p.innerText = (predClassUpdated ?? predClass) + ' - with ' +
+                //     Math.round(parseFloat(predictions[n].score) * 100) +
+                //     '% confidence.';
 
+                p.textContent = `${predClassUpdated ?? predClass} - With ${scoreNice} % Confidence`
+
+                // Draw in top left of bounding box outline.
+                p.style.left = `${predictions[n].bbox[0]}px`;
+                p.style.top = `${predictions[n].bbox[1]}px`
+                p.style.minWidth = `${predictions[n].bbox[2] - 10}px`;
 
                 // Draw the actual bounding box.
                 const highlighter = document.createElement('div');
                 highlighter.setAttribute('class', 'highlighter');
-                highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: ' +
-                    predictions[n].bbox[1] + 'px; width: ' +
-                    predictions[n].bbox[2] + 'px; height: ' +
-                    predictions[n].bbox[3] + 'px;';
-
-            
+                highlighter.style.left = `${predictions[n].bbox[0]}px`;
+                highlighter.style.top = `${predictions[n].bbox[1]}px`;
+                highlighter.style.width = `${predictions[n].bbox[2]}px`;
+                highlighter.style.height = `${predictions[n].bbox[3]}px`;
+    
 
                 const score = predictions[n].score;
 
