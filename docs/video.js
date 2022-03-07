@@ -6,9 +6,18 @@ const videoPlayer = document.getElementById('video-player');
 videoPlayer.onplay = (e) => {
 
     videoPlayer.onplaying = () => {
+        const originalHeight = videoPlayer.videoHeight;
+        const originalWidth = videoPlayer.videoWidth;
+        const resizedHeight = videoPlayer.offsetHeight;
+        const resizedWidth = videoPlayer.offsetWidth;
+        
+        const mapX = (x) => (x / originalWidth) * resizedWidth;
+        const mapY = (y) => (y / originalHeight) * resizedHeight;
+
         setTimeout(() => {
-            predictWebcam(videoPlayer, liveView2, videoObjectsIdentifiedList);
+            predictWebcam(videoPlayer, liveView2, videoObjectsIdentifiedList, mapX, mapY);
         }, 500);
+
         videoPlayer.onended = () => {
             if (requestId !== undefined) {
                 window.cancelAnimationFrame(requestId);

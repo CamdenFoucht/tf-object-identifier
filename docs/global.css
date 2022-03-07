@@ -22,7 +22,6 @@ a {
     background: #fff;
     max-width: 1400px;
     margin: auto;
-    padding: 15px;
 }
 
 .wrapper {
@@ -61,7 +60,8 @@ a {
 }
 
 .wrapper .container {
-    padding: 2rem;
+    padding: 0;
+    border: 2px solid #ccc;
 }
 
 .h1 {
@@ -72,14 +72,14 @@ a {
 }
 
 .min-accuracy-container {
-    border: 1px solid #eaeaea;
-    padding: 1rem;
+    /* padding: 1rem; */
     height: 100%;
+    border-right: 2px solid #ccc;
 }
 
 .acceptance-rate {
-    margin: 0 0 1rem 0;
-    font-size: 18px;
+    margin: 0;
+    font-size: 1rem;
 }
 
 .accurracy-helper-text{
@@ -105,11 +105,7 @@ a {
 
 .control-grid {
     display: grid;
-    grid-template-columns: 1fr 9fr;
-}
-
-.webcam-btn {
-    margin: 0 0 0 0;
+    grid-template-columns: 3fr 9fr;
 }
 
 .line-break {
@@ -117,4 +113,106 @@ a {
     width: 100%;
     background: #eee;
     margin: 3rem 0;
+}
+
+.controls-wrapper {
+    padding: 1rem;
+}
+
+.grid-right {
+    height: 100%;
+    background: #eaeaea;
+}
+
+
+.enable-webcam-span {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.video-container-el {
+    display: none;
+}
+
+.streamer-container-el {
+    display: none;
+}
+
+.visible {
+    display: block !important;
+}
+
+.streamer-container.active {
+    display: block;
+}
+
+.video-player-wrapper.active {
+    display: flex;
+}
+
+.image-prediction-container.active {
+    display: grid;
+}
+
+#video-player {
+    max-width: 100%;
+}
+
+.preparing-site {
+    opacity: 0;
+    animation: 3s page-fade-in-out ease-in-out;
+}
+
+.building-model {
+    opacity: 0;
+    animation: 3s page-fade-in-out ease-in-out 3s;
+}
+
+.loading-site {
+    opacity: 0;
+    animation: 1.5s page-fade-in ease-in-out 6s forwards;  
+}
+
+.btn-red {
+    background: #b71c1c;
+}
+
+.btn-green {
+    background: #4caf50;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.j-between {
+    justify-content: space-between;
+}
+
+@keyframes page-fade-in-out {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes page-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

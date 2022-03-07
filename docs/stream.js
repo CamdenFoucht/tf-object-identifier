@@ -1,6 +1,5 @@
 const enableWebcamButton = document.getElementById('webcamButton');
 const video = document.getElementById('webcam');
-const streamObjectsIdentifiedList = document.querySelector('.stream-objects-identified-list');
 const liveView = document.getElementById('liveView');
 
 
@@ -31,8 +30,10 @@ function enableCam(event) {
     if (video.srcObject !== null) {
         event.target.textContent = 'Enable Webcam';
         clearStream();
+        enableWebcamSpan.classList.add('display-block')
     } else {
         event.target.textContent = 'Stop Streaming';
+        enableWebcamSpan.classList.remove('display-block')
 
         // getUsermedia parameters.
         const constraints = {
@@ -48,4 +49,11 @@ function enableCam(event) {
             video.addEventListener('loadeddata', () => predictWebcam(video, liveView, streamObjectsIdentifiedList));
         });
     }
+}
+
+
+function disableCam() {
+    enableWebcamButton.textContent = 'Enable Webcam';
+    clearStream();
+    enableWebcamSpan.classList.add('display-block');
 }
